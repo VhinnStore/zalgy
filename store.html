@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zalgy Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">Zalgy Store</h1>
+      <nav>
+        <ul class="flex gap-4">
+          <li><a href="#products" class="hover:underline">Produk</a></li>
+          <li><a href="#cart" class="hover:underline">Keranjang</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 mt-8">
+    <!-- Produk Section -->
+    <section id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Produk 1 -->
+      <div class="bg-white p-4 rounded-lg shadow fade-in">
+        <img src="https://files.catbox.moe/94wm8h.jpg" alt="Produk 1" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Batu Akik Spesial</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp30.000</span> 
+          <span class="text-red-500 font-semibold">Rp20.000</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Batu akik berkualitas tinggi.</p>
+        <button onclick="addToCart('Batu Akik Spesial', 20000)" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Tambahkan ke Keranjang
+        </button>
+      </div>
+      <!-- Produk 2 -->
+      <div class="bg-white p-4 rounded-lg shadow fade-in">
+        <img src="https://files.catbox.moe/s2io40.jpg" alt="Produk 2" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Knuckle Baja</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp60.000</span> 
+          <span class="text-red-500 font-semibold">Rp35.000</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Knuckle dengan desain baja.</p>
+        <button onclick="addToCart('Knuckle Baja', 35000)" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Tambahkan ke Keranjang
+        </button>
+      </div>
+      <!-- Produk 3 -->
+      <div class="bg-white p-4 rounded-lg shadow fade-in">
+        <img src="https://files.catbox.moe/6rh7q2.jpg" alt="Produk 3" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Jaket Revolusi</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp149.999</span> 
+          <span class="text-red-500 font-semibold">Rp119.999</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Jaket merah tapi bukan PDIP.</p>
+        <button onclick="addToCart('Jaket Revolusi', 119999)" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Tambahkan ke Keranjang
+        </button>
+      </div>
+      <!-- Produk 4 -->
+      <div class="bg-white p-4 rounded-lg shadow fade-in">
+        <img src="https://files.catbox.moe/2siuf5.jpg" alt="Produk 4" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Katana Zoro</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp199.999</span> 
+          <span class="text-red-500 font-semibold">Rp99.999</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Katana zoro dilengkapi kamera.</p>
+        <button onclick="addToCart('Katana Zoro', 99999)" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Tambahkan ke Keranjang
+        </button>
+      </div>
+      <!-- Produk 5 -->
+      <div class="bg-white p-4 rounded-lg shadow fade-in">
+        <img src="https://files.catbox.moe/pmfl4l.jpg" alt="Produk 5" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Kalung Ajaib</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp1.199.999</span> 
+          <span class="text-red-500 font-semibold">Rp699.999</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Kalung anti santet dan ajaib.</p>
+        <button onclick="addToCart('Kalung Ajaib', 699999)" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+          Tambahkan ke Keranjang
+        </button>
+      </div>
+      <!-- ... Produk lainnya bisa disesuaikan sesuai kebutuhan ... -->
+    </section>
+
+    <!-- Keranjang Section -->
+    <section id="cart" class="mt-12">
+      <h2 class="text-2xl font-bold">Keranjang</h2>
+      <div id="cartItems" class="mt-4 bg-white p-4 rounded-lg shadow">
+        <p class="text-gray-600">Keranjang saat ini kosong</p>
+      </div>
+      <button id="checkoutBtn" onclick="checkout()" class="mt-4 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 hidden">
+        Buat Pesanan
+      </button>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white text-center py-4 mt-12">
+    <p>&copy; 2024 Zalgy Store. All right reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    const cart = [];
+
+    // Tambahkan produk ke keranjang
+    function addToCart(name, price) {
+      if (cart.length >= 11) {
+        alert("Keranjang sudah penuh, hanya bisa menambahkan hingga 11 produk.");
+        return;
+      }
+
+      const existingItem = cart.find(item => item.name === name);
+      if (existingItem) {
+        existingItem.quantity++;
+      } else {
+        cart.push({ name, price, quantity: 1 });
+      }
+
+      updateCart();
+      alert(`Produk ${name} berhasil ditambahkan ke keranjang!`);
+    }
+
+    // Hapus produk dari keranjang
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
+    }
+
+    // Update keranjang
+    function updateCart() {
+      const cartItems = document.getElementById('cartItems');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+      if (cart.length === 0) {
+        cartItems.innerHTML = '<p class="text-gray-600">Keranjang kosong</p>';
+        checkoutBtn.classList.add('hidden');
+      } else {
+        cartItems.innerHTML = cart
+          .map(
+            (item, index) =>
+              `<p>
+                ${index + 1}. ${item.name} (x${item.quantity}) - Rp${(item.price * item.quantity).toLocaleString()} 
+                <button onclick="removeFromCart(${index})" class="text-red-500 hover:underline ml-2">Hapus</button>
+              </p>`
+          )
+          .join('');
+        checkoutBtn.classList.remove('hidden');
+      }
+    }
+
+    // Checkout ke WhatsApp
+    function checkout() {
+      const waNumber = "6285172328435"; // Ganti dengan nomor WA penjual
+      const message = cart
+        .map(item => `${item.name} x${item.quantity}`)
+        .join('%2C%20');
+      const waLink = `https://wa.me/${waNumber}?text=Saya%20ingin%20membeli%20${message}`;
+      window.open(waLink, '_blank');
+    }
+
+    // Animasi saat di-scroll
+    const fadeIns = document.querySelectorAll('.fade-in');
+    window.addEventListener('scroll', () => {
+      fadeIns.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 50) {
+          el.classList.add('show');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
