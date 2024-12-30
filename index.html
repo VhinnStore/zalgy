@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zalgy Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-blue-50 text-gray-800">
+  <!-- Header -->
+ <header class="bg-blue-600 text-white py-4 sticky top-0 z-50 shadow-md">
+  <div class="container mx-auto flex justify-between items-center px-4">
+    <h1 class="text-2xl font-bold">Zalgy Store</h1>
+    <nav>
+      <ul class="flex gap-4">
+        <li><a href="keranjang.html" class="hover:underline">Keranjang</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Kontainer Baru -->
+<div class="bg-white mx-auto mt-6 w-3/4 p-4 text-center rounded-lg shadow-lg">
+  <p class="text-gray-800 text-lg font-semibold">Store nomor 1 di prewah</p>
+  <p class="text-gray-600 text-sm mt-2">
+    Ingin dibantu promosi disini gratis? Hubungi WA saya!
+  </p>
+</div>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 mt-8">
+    <!-- Produk Section -->
+    <section id="products" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Produk 1 -->
+      <div class="bg-white p-4 rounded-lg shadow">
+        <img src="https://files.catbox.moe/94wm8h.jpg" alt="Produk 1" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Batu Akik Spesial</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp30.000</span> 
+          <span class="text-red-500 font-semibold">Rp20.000</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Batu akik berkualitas tinggi.</p>
+        <button onclick="addToCart('Batu Akik Spesial', 20000, 'https://files.catbox.moe/94wm8h.jpg')" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  Tambahkan ke Keranjang
+</button>
+      </div>
+      <!-- Produk 2 -->
+      <div class="bg-white p-4 rounded-lg shadow">
+        <img src="https://files.catbox.moe/s2io40.jpg" alt="Produk 2" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Knuckle Baja</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp60.000</span> 
+          <span class="text-red-500 font-semibold">Rp35.000</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Knuckle dengan desain baja.</p>
+        <button onclick="addToCart('Knuckle Baja', 35000, 'https://files.catbox.moe/s2io40.jpg')" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  Tambahkan ke Keranjang
+</button>
+      </div>
+      <!-- Produk 3 -->
+      <div class="bg-white p-4 rounded-lg shadow">
+        <img src="https://files.catbox.moe/6rh7q2.jpg" alt="Produk 3" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Jaket Revolusi</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp149.999</span> 
+          <span class="text-red-500 font-semibold">Rp119.999</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Jaket merah tapi bukan PDIP.</p>
+       <button onclick="addToCart('Jaket Revolusi', 119999, 'https://files.catbox.moe/6rh7q2.jpg')" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  Tambahkan ke Keranjang
+</button>
+      </div>
+      <!-- Produk 4 -->
+      <div class="bg-white p-4 rounded-lg shadow">
+        <img src="https://files.catbox.moe/2siuf5.jpg" alt="Produk 4" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Katana Zoro</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp199.999</span> 
+          <span class="text-red-500 font-semibold">Rp99.999</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Katana Zoro dilengkapi kamera.</p>
+        <button onclick="addToCart('Katana Zoro', 99999, 'https://files.catbox.moe/2siuf5.jpg')" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  Tambahkan ke Keranjang
+</button>
+      </div>
+      <!-- Produk 5 -->
+      <div class="bg-white p-4 rounded-lg shadow">
+        <img src="https://files.catbox.moe/pmfl4l.jpg" alt="Produk 5" class="w-full h-80 object-cover rounded-md">
+        <h2 class="text-lg font-semibold mt-2">Kalung Ajaib</h2>
+        <p class="text-sm text-gray-600">
+          <span class="line-through">Rp1.199.999</span> 
+          <span class="text-red-500 font-semibold">Rp699.999</span>
+        </p>
+        <p class="text-xs text-gray-500">Keterangan: Kalung anti santet dan ajaib.</p>
+        <button onclick="addToCart('Kalung Ajaib', 699999, 'https://files.catbox.moe/pmfl4l.jpg')" class="mt-2 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+  Tambahkan ke Keranjang
+</button>
+      </div>
+    </section>
+  </main>
+  
+  <div class="bg-white mx-auto mt-6 w-3/4 p-4 text-center rounded-lg shadow-lg">
+  <p class="text-gray-700 text-lg font-semibold">Created By Zalgy Baadilah</p>
+</div>
+  
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white text-center py-4 mt-12">
+    <p>&copy; 2024 Zalgy Store. All right reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  // Tambahkan produk ke keranjang dengan gambar
+  function addToCart(name, price, image) {
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+      existingItem.quantity++;
+    } else {
+      cart.push({ name, price, image, quantity: 1 });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`Produk ${name} berhasil ditambahkan ke keranjang!`);
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang - Zalgy Store</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+  /* Menjaga footer tetap di bawah */
+  body, html {
+    height: 100%;
+  }
+
+  main {
+    flex-grow: 1;
+    padding-bottom: 2rem; /* Tambahkan jarak dari konten ke footer */
+  }
+</style>
+</head>
+<body class="bg-blue-50 text-gray-800 flex flex-col">
+  <!-- Header -->
+  <header class="bg-blue-600 text-white py-4 sticky top-0 z-50 shadow-md">
+    <div class="container mx-auto flex justify-between items-center px-4">
+      <h1 class="text-2xl font-bold">Zalgy Store</h1>
+      <nav>
+        <ul class="flex gap-4">
+          <li><a href="index.html" class="hover:underline">Produk</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto px-4 mt-8 flex flex-col">
+    <h2 class="text-2xl font-bold mb-4">Keranjang Belanja</h2>
+    <div id="cartItems" class="space-y-4">
+      <p class="text-gray-600">Keranjang saat ini kosong</p>
+    </div>
+    <p id="totalPrice" class="text-right mt-2 text-lg font-semibold">Total: Rp0</p>
+    <button id="checkoutBtn" onclick="checkout()" class="mt-4 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 hidden">
+      Buat Pesanan
+    </button>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-blue-600 text-white text-center py-4 mt-auto">
+    <p>&copy; 2024 Zalgy Store. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+  function updateCart() {
+    const cartItems = document.getElementById('cartItems');
+    const totalPriceElem = document.getElementById('totalPrice');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = '<p class="text-gray-600">Keranjang kosong</p>';
+      totalPriceElem.textContent = 'Total: Rp0';
+      checkoutBtn.classList.add('hidden');
+    } else {
+      cartItems.innerHTML = cart
+        .map(
+          (item, index) => `
+            <div class="bg-white p-4 rounded-lg shadow flex items-center gap-4">
+              <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded">
+              <div class="flex-1">
+                <p class="font-semibold">${item.name}</p>
+                <p>Rp${item.price.toLocaleString()} x ${item.quantity}</p>
+              </div>
+              <button onclick="removeFromCart(${index})" class="text-red-500 hover:underline text-sm">Hapus</button>
+            </div>
+          `
+        )
+        .join('');
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      totalPriceElem.textContent = `Total: Rp${totalPrice.toLocaleString()}`;
+      checkoutBtn.classList.remove('hidden');
+    }
+  }
+
+  function removeFromCart(index) {
+    if (cart[index].quantity > 1) {
+      cart[index].quantity--;
+    } else {
+      cart.splice(index, 1);
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCart();
+  }
+
+  function checkout() {
+    const waNumber = "6285172328435"; // Ganti dengan nomor WA penjual
+    const message = cart
+      .map(item => `${item.name} x${item.quantity}`)
+      .join('%2C%20');
+    const waLink = `https://wa.me/${waNumber}?text=Saya%20ingin%20membeli%20${message}`;
+    window.open(waLink, '_blank');
+  }
+
+  updateCart();
+</script>
+</body>
+</html>
